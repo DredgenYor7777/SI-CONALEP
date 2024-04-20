@@ -251,13 +251,13 @@
         <Component class="javax.swing.JLabel" name="fondo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/b.jpg"/>
+              <Image iconType="3" name="/img/biblioteca.jpg"/>
             </Property>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="340" y="0" width="1380" height="770"/>
+              <AbsoluteConstraints x="-10" y="0" width="1730" height="770"/>
             </Constraint>
           </Constraints>
         </Component>

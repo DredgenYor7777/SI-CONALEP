@@ -5,12 +5,17 @@ package conalep;
 
 import com.jhlabs.image.*;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
+import javax.swing.plaf.basic.BasicPanelUI;
 
 public class Login extends javax.swing.JFrame {
     
@@ -24,7 +29,7 @@ public class Login extends javax.swing.JFrame {
       
         initComponents();
          applyBlur();
-        componentes();
+//        componentes();
        
          this.setExtendedState(MAXIMIZED_BOTH);
          
@@ -142,9 +147,9 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.add(jpLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 430, 430));
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/b.jpg"))); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/biblioteca.jpg"))); // NOI18N
         fondo.setOpaque(true);
-        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 1380, 770));
+        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1730, 770));
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1380, 770);
@@ -152,20 +157,24 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-    
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_PasswordActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        RegistroUsuario registro = new RegistroUsuario();
+        registro.setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserActionPerformed
 
-    private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PasswordActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */
@@ -191,55 +200,94 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    public javax.swing.JPanel jpLogin;
+    private javax.swing.JPanel jpLogin;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 
-private void componentes(){
-        jpLogin = new javax.swing.JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                applyBlur();
-            }
-        };
-        jpLogin.setLayout(null); // Asegúrate de que el layout sea null para poder posicionar componentes libremente
-
-       fondo = new JLabel(new ImageIcon(getClass().getResource("/img/biblioteca.jpg")));
-        fondo.setBounds(0, 0, 480, 770);
-        jpLogin.add(fondo);
-
-        // Resto de la inicialización de componentes aquí...
-
-        getContentPane().add(jpLogin);
-        pack();
-}
-    
+//private void componentes(){
+//        jpLogin = new javax.swing.JPanel() {
+//            @Override
+//            protected void paintComponent(Graphics g) {
+//                super.paintComponent(g);
+//                applyBlur();
+//            }
+//        };
+//        jpLogin.setLayout(null); // Asegúrate de que el layout sea null para poder posicionar componentes libremente
+//
+////        fondo = new JLabel(new ImageIcon(getClass().getResource("/img/biblioteca.jpg")));
+////        fondo.setBounds(0, 0, 480, 770);
+////        jpLogin.add(fondo);
+//
+//        // Resto de la inicialización de componentes aquí...
+//
+////        getContentPane().add(jpLogin);
+////        pack();
+//}
+//    
 
 private void applyBlur() {
+    
+    
         BufferedImage bufferedImage = new BufferedImage(jpLogin.getWidth(), jpLogin.getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = bufferedImage.createGraphics();
-
+ 
+ 
         // Pintar el JPanel en la imagen
-        jpLogin.paint(g2d);
-        g2d.dispose();
+         jpLogin.paint(g2d);
+       //g2d.dispose();
 
         // Aplicar el filtro de desenfoque a la imagen de fondo del JPanel
-        GaussianFilter blur = new GaussianFilter(500f); // Cambia el valor de desenfoque según lo desees
+        GaussianFilter blur = new GaussianFilter(10f); // Cambia el valor de desenfoque según lo desees
+      
         blurredImage = blur.filter(bufferedImage, null);
 
 //         Establecer la imagen de fondo desenfocada como fondo del JPanel
+
+//        ImageIcon blurredIcon = new ImageIcon(blurredImage);
+             
         jpLogin.setOpaque(true);
-        jpLogin.setBackground(new Color(0, 0, 0, 10)); // Establecer un fondo transparente
-        
+        jpLogin.setBackground(new Color(0,0, 0, 0)); // Establecer un fondo transparente
+
         jpLogin.setBorder(null);
         
 
         // Crear un JLabel para mostrar la imagen de fondo desenfocada
-        fondo = new JLabel(new ImageIcon(blurredImage));
-        fondo.setBounds(0, 0, jpLogin.getWidth(), jpLogin.getHeight());
-        jpLogin.add(fondo);
+        
+//        jpLogin.setUI(new BasicPanelUI(){
+//            public void paint(Graphics g, JComponent c){
+//                super.paint(g, c);
+//                blurredIcon.paintIcon(c, g, 150, 100);
+//                
+//            }
+//            
+//        }  );
+       
+//        setComponentOpaque(jpLogin, false);
+fondo = new JLabel(new ImageIcon(getClass().getResource("/img/biblioteca.jpg")));
+      fondo= new JLabel(new ImageIcon(blurredImage));
+       fondo.setBounds(0, 0, jpLogin.getWidth(), jpLogin.getHeight());
+       jpLogin.add(fondo);
+        
+//     getContentPane().add(jpLogin);
+//     pack();
+        
     }
+
+//
+//private void setComponentOpaque(Container container, boolean opaque){
+//    
+//    Component [] components = container.getComponents();
+//    
+//    for (Component component : components){
+//        if(component instanceof JComponent){
+//            ((JComponent) component).setOpaque(opaque);
+//        }
+//        if(component instanceof Container){
+//            setComponentOpaque((Container) component, opaque);
+//        }
+//    }
+//    
+//}
 
 
 
