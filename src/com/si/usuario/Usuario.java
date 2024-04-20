@@ -12,6 +12,8 @@ public class Usuario {
     private String apellido;
     private String direccion;
     private String telefono;
+    private String nombreUsuario;
+    private String contrasenia;
     private int edad;
 
     public String getNombre() {
@@ -60,6 +62,22 @@ public class Usuario {
 
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
     
    
